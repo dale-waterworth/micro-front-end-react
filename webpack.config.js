@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const {ModuleFederationPlugin} = require("webpack").container;
-const webpack = require('webpack');
 const dotenv = require('dotenv');
 
 module.exports = () => {
@@ -10,29 +9,28 @@ module.exports = () => {
 
     console.log('ENV - ', env)
 
-
     return {
-        entry: "./src/index.tsx",
+        entry: "./src/index",
         mode: "development",
         devServer: {
             contentBase: path.join(__dirname, "dist"),
             port: 3001,
         },
         output: {
-            publicPath: "http://localhost:3001/",
+            publicPath: "auto",
         },
         resolve: {
             extensions: [".tsx", ".ts", ".js"],
         },
         module: {
             rules: [
-                /*{
-                    test: /bootsrap\.tsx$/,
+                {
+                    test: /bootstrap\.tsx$/,
                     loader: "bundle-loader",
                     options: {
                         lazy: true,
                     },
-                },*/
+                },
                 {
                     test: /\.jsx?$/,
                     loader: "babel-loader",
@@ -70,23 +68,16 @@ module.exports = () => {
             ],
         },
         plugins: [
-            // new webpack.DefinePlugin({'process.env.PUBLIC_URL': JSON.stringify(env.PUBLIC_URL)}),
-            new HtmlWebpackPlugin({
-                template: "./public/index.html",
-            }),
             new ModuleFederationPlugin({
                 name: "reactApp",
-                library: {type: "var", name: "reactApp"},
                 filename: "remoteEntry.js",
                 exposes: {
-                    "./Header": "./src/Header",
+                    "./AReactComponent": "./src/AReactComponent",
                 },
-                shared: {
-                    ...["react", "react-dom"],
-                    react: {
-                        eager: true,
-                    }
-                }
+                shared: ["react", "react-dom"]
+            }),
+            new HtmlWebpackPlugin({
+                template: "./public/index.html",
             }),
         ],
     };

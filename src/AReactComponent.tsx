@@ -1,6 +1,6 @@
 import React from "react";
 
-class Header extends React.Component<{ children: any }> {
+class AReactComponent extends React.Component<{ children: any }> {
     render() {
         let {children} = this.props;
         return <h1 style={{color: '#0384E2'}}>
@@ -10,4 +10,4 @@ class Header extends React.Component<{ children: any }> {
     }
 }
 
-export default Header;
+export default AReactComponent;

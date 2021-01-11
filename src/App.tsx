@@ -1,15 +1,13 @@
 import React from 'react';
-import './App.css';
-import Header from "./Header";
+import AReactComponent from "./AReactComponent";
 
-function App() {
-  return (
+const App = () => (
     <div className="App">
-      <Header>
-          Default content from app 1
-      </Header>
+        <AReactComponent>
+            Default content from app 1
+        </AReactComponent>
     </div>
-  );
-}
+);
+
 
 export default App;
