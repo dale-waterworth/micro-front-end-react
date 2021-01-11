@@ -79,10 +79,8 @@ module.exports = () => {
                 library: {type: "var", name: "reactApp"},
                 filename: "remoteEntry.js",
                 exposes: {
-                    // expose each component
                     "./Header": "./src/Header",
                 },
-                //shared: ["react", "react-dom"],
                 shared: {
                     ...["react", "react-dom"],
                     react: {

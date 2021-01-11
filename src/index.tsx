@@ -1,2 +1,3 @@
-import bootsrap from "./bootsrap";
-bootsrap();
+// @ts-ignore
+import bootstrap from "./bootstrap";
+bootstrap(() => {});
