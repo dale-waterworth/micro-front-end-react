@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Header>
-          Hello header from app 1
+          Default content from app 1
       </Header>
     </div>
   );
